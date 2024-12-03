@@ -67,10 +67,10 @@ function App() {
         path:"/reels",
         element:<Reels/>
       },
-      {
-        path:"/messages",
-        element:<Messages/>
-      },
+      // {
+      //   path:"/messages",
+      //   element:<Messages/>
+      // },
       {
         path:"/setting",
         element:<Setting/>

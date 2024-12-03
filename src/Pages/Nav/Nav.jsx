@@ -241,7 +241,6 @@ const handlerSelectChange = () => {
 };
 
 const uploadPhoto = (e) => {
-  // const file = e.target.files;
   const files = Array.from(e.target.files);
   setPhoto(prevPhotos=> [...prevPhotos, ...files])
 
@@ -321,7 +320,7 @@ const handleDiscard = () => {
   setModalActive(null)
 };
 
-  // ==============================================================
+  // =========================================
 
   const handleFollowReq = () => {
      setFollowReq((prev)=> !prev)
@@ -350,6 +349,11 @@ const handleDiscard = () => {
  const logout = () => {
    return firebase.logout();
  };
+
+ const searchNavRemove = () => {
+  searchRef.current.classList.remove('active');
+  heightRef.current.classList.remove('active');
+ }
   
   return (
     <>
@@ -418,7 +422,7 @@ const handleDiscard = () => {
 
         </div>
         {/* more box */}
-        <div className="more-box-container" ref={moreRef}>
+        <div className="more-box-container" ref={moreRef} >
            <div className="more-box-section">
            <div className="more-pages">
             <NavLink to="/setting" style={{textDecoration:"none", color:"black",  border:'none'}}><h3><FiSettings /></h3></NavLink>
@@ -497,7 +501,7 @@ const handleDiscard = () => {
              <div className="search-data-usernames">
              {filteredUsers.length > 0 ? (
             filteredUsers.map((users, index) => (
-               <NavLink to={`/alluser/${users.username}`} style={{textDecoration:"none", border:"none", outline:"none", color:"black"}}>
+               <NavLink to={`/alluser/${users.username}`} style={{textDecoration:"none", border:"none", outline:"none", color:"black"}} onClick={searchNavRemove}>
                 <div className="serches-user" key={index}>
                   <div className="searches-user-dp">
                   <img src={users.photoURL || emptyImg} alt={index} />
